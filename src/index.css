@@ -1,0 +1,336 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+
+    --primary: 224 76% 48%; 
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 215 28% 17%; 
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    --accent: 315 86% 59%; 
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 224 76% 48%; 
+
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%; 
+    --foreground: 210 40% 98%;
+
+    --card: 222.2 84% 7%; 
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 224 76% 58%; 
+    --primary-foreground: 222.2 84% 4.9%;
+
+    --secondary: 217.2 32.6% 17.5%; 
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 210 40% 96.1%;
+
+    --accent: 315 86% 64%; 
+    --accent-foreground: 222.2 84% 4.9%;
+
+    --destructive: 0 62.8% 50.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 224 76% 58%; 
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+    box-sizing: border-box;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Inter', sans-serif; 
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    margin: 0;
+    padding: 0;
+    line-height: 1.5;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-semibold tracking-tight;
+    margin: 0;
+    padding: 0;
+  }
+}
+
+@layer components {
+  .video-container {
+    @apply relative w-full pt-[56.25%] bg-video-background rounded-xl overflow-hidden shadow-2xl border-2 border-transparent dark:border-gray-800;
+  }
+  
+  .video-player {
+    @apply absolute top-0 left-0 w-full h-full;
+  }
+  
+  .video-controls {
+    @apply absolute bottom-0 left-0 right-0 flex items-center justify-between px-4 py-3 bg-gradient-to-t from-black/90 to-transparent transition-opacity duration-300;
+  }
+  
+  .control-button {
+    @apply p-2.5 text-white rounded-full hover:bg-white/25 transition-colors duration-200;
+  }
+  
+  .progress-bar {
+    @apply h-1.5 bg-gray-700/70 rounded-full overflow-hidden relative cursor-pointer;
+  }
+  
+  .progress-fill {
+    @apply h-full bg-brand-accent absolute left-0 top-0 transition-all duration-150;
+  }
+  
+  .ad-container {
+    @apply bg-ads-background border border-ads-border rounded-lg flex justify-center items-center transition-all duration-300;
+    margin: 0 !important;
+    padding: 0 !important;
+    line-height: 1 !important;
+  }
+
+  /* OPTIMIZED: Ad Container Styles with Full Width */
+  .optimized-ad-container {
+    @apply w-full flex justify-center items-center;
+    padding: 0;
+    margin: 0;
+  }
+
+  .top-ad-position {
+    @apply mb-4;
+  }
+
+  .bottom-ad-position {
+    @apply mt-6;
+  }
+
+  .sidebar-ad-position {
+    @apply mb-4;
+  }
+
+  .in-video-ad-position {
+    @apply relative;
+  }
+
+  .below-video-ad-position {
+    @apply mt-4;
+  }
+
+  /* OPTIMIZED: Ad content wrapper with full width utilization */
+  .ad-content-wrapper {
+    @apply relative transition-all duration-300 hover:scale-[1.01];
+    background: #f8f9fa;
+    border: 1px solid rgba(0,0,0,0.08);
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    width: 100%;
+    min-width: 100%;
+    max-width: 100%;
+  }
+
+  .ad-content-wrapper.monetag-ad {
+    @apply border-blue-200 dark:border-blue-800;
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.03) 0%, rgba(99, 102, 241, 0.02) 100%);
+  }
+
+  .ad-content-wrapper.adstera-ad {
+    @apply border-purple-200 dark:border-purple-800;
+    background: linear-gradient(135deg, rgba(168, 85, 247, 0.03) 0%, rgba(236, 72, 153, 0.02) 100%);
+  }
+
+  /* Dark mode adjustments for ads */
+  .dark .ad-content-wrapper {
+    background: linear-gradient(135deg, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.05) 100%);
+    border-color: rgba(255,255,255,0.08);
+  }
+
+  /* OPTIMIZED: Ensure ad content fills full space */
+  .ad-content-wrapper > div {
+    width: 100% !important;
+    height: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    min-width: 100% !important;
+  }
+
+  /* OPTIMIZED: Ad content styling for complete container fit */
+  .ad-content-wrapper iframe,
+  .ad-content-wrapper img,
+  .ad-content-wrapper div[id*="ad"],
+  .ad-content-wrapper div[class*="ad"],
+  .ad-content-wrapper div[data-ad] {
+    max-width: 100% !important;
+    width: 100% !important;
+    min-width: 100% !important;
+    height: 100% !important;
+    border: none !important;
+    display: block !important;
+    margin: 0 auto !important;
+    padding: 0 !important;
+    text-align: center !important;
+  }
+  
+  .admin-card {
+    @apply bg-card shadow-card rounded-xl p-6 transition-all duration-300 hover:shadow-card-hover;
+  }
+
+  .section-title {
+    @apply text-3xl sm:text-4xl font-extrabold mb-4 text-gray-900 dark:text-white;
+    margin-bottom: 1rem !important;
+  }
+
+  .gradient-text {
+    @apply text-transparent bg-clip-text bg-gradient-to-r from-primary via-brand-accent to-accent;
+  }
+}
+
+/* Utility classes to remove spacing */
+@layer utilities {
+  .no-spacing {
+    margin: 0 !important;
+    padding: 0 !important;
+    gap: 0 !important;
+  }
+  
+  .compact-layout {
+    line-height: 1.2 !important;
+  }
+  
+  /* Remove default margins from common elements */
+  .mb-0-force {
+    margin-bottom: 0 !important;
+  }
+  
+  .mt-0-force {
+    margin-top: 0 !important;
+  }
+  
+  .p-0-force {
+    padding: 0 !important;
+  }
+
+  /* OPTIMIZED: Full width utilities for ads */
+  .w-full-force {
+    width: 100% !important;
+    min-width: 100% !important;
+    max-width: 100% !important;
+  }
+}
+
+/* Global spacing resets for ad sections */
+[class*="ads-section"],
+[data-ad-type] {
+  margin: 0 !important;
+  padding: 0 !important;
+  line-height: 1 !important;
+}
+
+/* Enhanced ad positioning and styling */
+.optimized-ad-container {
+  transition: all 0.3s ease;
+}
+
+.optimized-ad-container:hover {
+  transform: translateY(-1px);
+}
+
+/* OPTIMIZED: Force proper ad container sizing with full width */
+.ad-content-wrapper,
+.ad-content-wrapper * {
+  box-sizing: border-box !important;
+}
+
+/* OPTIMIZED: Responsive ad sizing with full width coverage */
+@media (max-width: 768px) {
+  .ad-content-wrapper {
+    max-width: 100% !important;
+    min-width: 100% !important;
+    width: 100% !important;
+    margin: 0 auto;
+  }
+
+  .top-ad-position,
+  .bottom-ad-position {
+    padding: 0 1rem;
+  }
+
+  .sidebar-ad-position {
+    max-width: 100%;
+  }
+
+  .optimized-ad-container {
+    padding: 0;
+    width: 100%;
+  }
+
+  .ad-content-wrapper iframe,
+  .ad-content-wrapper div[id*="ad"],
+  .ad-content-wrapper div[class*="ad"] {
+    width: 100% !important;
+    min-width: 100% !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .ad-content-wrapper {
+    border-radius: 6px !important;
+    width: 100% !important;
+    min-width: 100% !important;
+  }
+}
+
+/* Remove spacing from containers */
+.container {
+  padding-top: 1rem !important;
+  padding-bottom: 1rem !important;
+}
+
+/* Compact spacing for mobile */
+@media (max-width: 768px) {
+  .container {
+    padding-top: 0.5rem !important;
+    padding-bottom: 0.5rem !important;
+  }
+  
+  .section-title {
+    margin-bottom: 0.5rem !important;
+  }
+}
